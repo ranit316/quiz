@@ -1,0 +1,26 @@
+/* Custom Styles for Dashboard */
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.dashboard-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-item h5 {
+    margin-top: 0;
+    color: #343a40;
+}
+
+.dashboard-item p {
+    color: #6c757d;
+}
