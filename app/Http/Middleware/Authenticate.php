@@ -14,4 +14,15 @@ class Authenticate extends Middleware
     {
         return $request->expectsJson() ? null : route('admin.login');
     }
+
+    protected function unauthenticated($request, array $guards)
+    {
+        abort(response()->json(
+            [
+                'status' => '401',
+                'message' => 'UnAuthenticated User',
+            ],
+            401
+        ));
+    }
 }
