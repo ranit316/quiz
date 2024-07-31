@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -38,6 +39,28 @@ class AuthController extends Controller
             return redirect()->back()->with('password_message', 'Please Provide Correct Password');
         }
     }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|string|email|unique:users',
+        'password' => 'required',
+    ]);
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
+
+    return redirect()->route('admin.login')->with('register_success', 'Registration successful. Please login.');
+}
 
     public function adminlogout()
     {

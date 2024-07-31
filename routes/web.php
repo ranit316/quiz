@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [QuizController::class, 'index'])->name('quiz.index');
 Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 Route::post('admin/login', [AuthController::class, 'postlogin'])->name('admin.login');
+Route::get('/admin/register', [AuthController::class, 'register'])->name('admin.register');
+Route::post('/admin/register', [AuthController::class, 'store'])->name('admin.register');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/quiz', [QuizController::class, 'quiz'])->name('quiz');

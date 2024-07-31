@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -15,11 +15,20 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h4>Login</h4>
+                        <h4>Register</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.login') }}">
+                        <form method="POST" action="{{ route('admin.register') }}">
                             @csrf
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
@@ -38,29 +47,8 @@
                                     </span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
                         </form>
-                        @if (session('email_message'))
-                            <div class="alert alert-danger mt-3">
-                                {{ session('email_message') }}
-                            </div>
-                        @endif
-                        @if (session('password_message'))
-                            <div class="alert alert-danger mt-3">
-                                {{ session('password_message') }}
-                            </div>
-                        @endif
-                        @if (session('logout'))
-                            <div class="alert alert-danger mt-3">
-                                {{ session('logout') }}
-                            </div>
-                        @endif
-
-                        @if (session('register_success'))
-                            <div class="alert alert-success mt-3">
-                                {{ session('register_success') }}
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>
