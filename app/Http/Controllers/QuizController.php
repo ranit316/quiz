@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttemptQuiz;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\Question;
@@ -69,6 +70,10 @@ class QuizController extends Controller
                 $score++;
             }
         }
+        $data = AttemptQuiz::create([
+            'quiz_id' => $quizId,
+            'attempt_by' => auth()->user()->id,
+        ]);
         return response()->json(['score' => $score]);
     }
 }
