@@ -18,7 +18,7 @@ class SendQuizAttemptReport extends Command
      *
      * @var string
      */
-    protected $signature = 'app:send-quiz-attempt-report';
+    protected $signature = 'report:quiz-attempts';
 
     /**
      * The console command description.

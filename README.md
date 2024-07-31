@@ -64,3 +64,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## How to use
+composer update
+copy .env.example in .env
+run command -> php artisan key:generate
+php artisan migrate
+php artisan db:seed
+username= ranit316@gmail.com
+password = ranit316@gmail.com
+now you can add quiz attemp quiz
+attemp report command = php artisan report:quiz-attempts
